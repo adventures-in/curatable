@@ -5,11 +5,13 @@ description: a backend for news_curation app
 publish_to: none
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.13.0 <3.0.0"
 
 dependencies:
   functions_framework: ^0.4.0
   shelf: ^1.0.0
+  googleapis: 
+  googleapis_auth: 
 
 dev_dependencies:
   lints:
