@@ -1,30 +1,43 @@
 import 'dart:convert';
 
 import 'package:functions_framework/functions_framework.dart';
-import 'package:googleapis/firestore/v1.dart';
-import 'package:googleapis_auth/auth_io.dart';
+import 'package:http/http.dart' as http;
 import 'package:shelf/shelf.dart';
 
-const _encoder = JsonEncoder.withIndent(' ');
+import 'types.dart';
 
 @CloudFunction()
 Future<Response> function(Request request) async {
-  // Create services and a client that will authenticate as the given user.
-  final serviceClient =
-      await clientViaApplicationDefaultCredentials(scopes: []);
-  final api = FirestoreApi(serviceClient);
+  // Create a client that will authenticate as the default service account.
+  // final client = await clientViaApplicationDefaultCredentials(scopes: []);
 
-  final requestDocument = Document()
-    ..fields = {'key': Value()..integerValue = '5'};
+  // final service = FirestoreService(client);
+  // service.saveDocument();
 
-  final responseDocument =
-      await api.projects.databases.documents.createDocument(
-    requestDocument,
-    'projects/news-curation-project/databases/(default)/documents',
-    'testing',
-  );
+  var client = http.Client();
+  final queryParameters = {'sort': 'new', 'limit': '100'};
+  final uri =
+      Uri.https('www.reddit.com', '/r/FlutterDev/.json', queryParameters);
 
-  print(_encoder.convert(responseDocument.toJson()));
+  try {
+    final response = await http.get(uri, headers: {
+      // 'authorization': 'Token $token',
+      'content-type': 'application/json',
+    });
+
+    final json = JsonDecoder().convert(response.body);
+    final jsonData = json['data'] as JsonMap;
+    // ['children'] as List<Map<String, Object?>>;
+    //JsonList;
+
+    for (var key in jsonData.keys) {
+      print(key);
+      // print((item)['kind']);
+      // print((item)['data']);
+    }
+  } finally {
+    client.close();
+  }
 
   return Response.ok('Saved x new posts');
 }
