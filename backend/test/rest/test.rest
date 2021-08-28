@@ -1,0 +1,8 @@
+POST https://discord.com/api/v9/channels/880056311641952286/messages HTTP/1.1
+content-type: application/json
+Authorization: Bot [token from https://discord.com/developers/applications/880294733195395073/bot]
+User-Agent: DiscordBot ($https://discord.com/api/v9/channels/880056311641952286/messages, $9)
+
+{
+    "content": "test message"
+}
