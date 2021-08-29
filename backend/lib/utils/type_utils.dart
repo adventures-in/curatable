@@ -9,6 +9,16 @@ abstract class ReduxModel {
   JsonMap toJson();
 }
 
+extension JsonMapExtension on JsonMap {
+  Document toDocument() {
+    var document = Document()..fields = {};
+    forEach((key, value) {
+      document.fields![key] = TypeUtil.encode(value);
+    });
+    return document;
+  }
+}
+
 // Adapted from: https://github.com/cachapa/firedart/blob/master/lib/firestore/type_util.dart
 
 abstract class TypeUtil {

@@ -1,4 +1,3 @@
-import 'package:backend/extensions/json_map_extension.dart';
 import 'package:backend/utils/type_utils.dart';
 import 'package:googleapis/firestore/v1.dart';
 import 'package:googleapis_auth/auth_io.dart';
