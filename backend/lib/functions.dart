@@ -1,12 +1,11 @@
 import 'dart:convert';
 
 import 'package:backend/services/firestore_service.dart';
+import 'package:backend/utils/type_utils.dart';
 import 'package:functions_framework/functions_framework.dart';
 import 'package:googleapis_auth/auth_io.dart';
 import 'package:http/http.dart' as http;
 import 'package:shelf/shelf.dart';
-
-import 'types.dart';
 
 @CloudFunction()
 Future<Response> function(Request request) async {
@@ -25,10 +24,8 @@ Future<Response> function(Request request) async {
     final response =
         await http.get(uri, headers: {'content-type': 'application/json'});
 
-    // File('test.json').writeAsStringSync(response.body);
-
+    // Decode the response to a JsonMap and save each reddit post to a firestore document
     final json = JsonDecoder().convert(response.body);
-
     final jsonList = json['data']['children'] as List;
     for (var message in jsonList) {
       service.saveDocument(message['data'] as JsonMap);
