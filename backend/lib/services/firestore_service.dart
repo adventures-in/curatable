@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:backend/types.dart';
 import 'package:googleapis/firestore/v1.dart';
 import 'package:googleapis_auth/auth_io.dart';
 
@@ -11,9 +12,12 @@ class FirestoreService {
   late final FirestoreApi _api;
   final _encoder = JsonEncoder.withIndent(' ');
 
-  saveDocument() async {
-    final requestDocument = Document()
-      ..fields = {'key': Value()..integerValue = '5'};
+  saveDocument(JsonMap json) async {
+    // FirestoreApi throws if there is a key called 'name'
+    // json.removeWhere((key, value) => key == "name");
+    json.removeWhere((key, value) => value == null);
+
+    final requestDocument = Document.fromJson({'fields': json});
 
     final responseDocument =
         await _api.projects.databases.documents.createDocument(
