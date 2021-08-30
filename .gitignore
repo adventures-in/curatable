@@ -48,3 +48,6 @@ app.*.map.json
 # Built value generated files
 *.freezed.dart
 *.g.dart
+
+# Firebase config files
+ios/Runner/GoogleService-Info.plist

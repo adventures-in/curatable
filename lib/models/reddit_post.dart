@@ -12,7 +12,7 @@ class RedditPost with _$RedditPost {
     required String id,
 
     /// The kind of reddit thing
-    required String kind,
+    required String? kind,
 
     ///
     required double created,
@@ -25,7 +25,7 @@ class RedditPost with _$RedditPost {
     required String selftext,
 
     /// the message itself with HTML formatting
-    @JsonKey(name: 'selftext_html') required String selftextHTML,
+    @JsonKey(name: 'selftext_html') required String? selftextHTML,
 
     /// In a media post, url links to the media
     String? url,
