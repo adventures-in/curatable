@@ -13,16 +13,10 @@ dependencies:
   googleapis:
   googleapis_auth:
   http:
-  
-  fast_immutable_collections: any
-  freezed_annotation: any
-  json_annotation: any
 
 dev_dependencies:
   lints:
   build_runner: ^2.0.0
   functions_framework_builder: ^0.4.0
-  freezed: any
-  json_serializable: any
   test: ^1.15.7
   test_process: ^2.0.0
