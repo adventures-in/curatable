@@ -1,5 +1,4 @@
-import 'dart:convert';
-
+import 'package:backend/utils/type_utils.dart';
 import 'package:googleapis/firestore/v1.dart';
 import 'package:googleapis_auth/auth_io.dart';
 
@@ -9,19 +8,14 @@ class FirestoreService {
   }
 
   late final FirestoreApi _api;
-  final _encoder = JsonEncoder.withIndent(' ');
 
-  saveDocument() async {
-    final requestDocument = Document()
-      ..fields = {'key': Value()..integerValue = '5'};
+  saveDocument(JsonMap json) async {
+    final requestDocument = json.toDocument();
 
-    final responseDocument =
-        await _api.projects.databases.documents.createDocument(
+    await _api.projects.databases.documents.createDocument(
       requestDocument,
       'projects/news-curation-project/databases/(default)/documents',
       'testing',
     );
-
-    print(_encoder.convert(responseDocument.toJson()));
   }
 }
