@@ -1,0 +1,6 @@
+{
+  "files.exclude": {
+    "build": true,
+    "lib/generated_plugin_registrant.dart": true
+  }
+}
