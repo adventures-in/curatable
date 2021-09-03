@@ -53,3 +53,4 @@ app.*.map.json
 ios/Runner/GoogleService-Info.plist
 android/app/google-services.json
 web/index.html
+macos/Runner/GoogleService-Info.plist
