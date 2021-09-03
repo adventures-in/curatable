@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:news_curation/models/reddit_post.dart';
+import 'package:news_curation/widgets/news_item_card.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -93,20 +94,14 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      appBar: AppBar(title: const Text('Curate the News')),
       body: RefreshIndicator(
         onRefresh: () =>
             Future.delayed(const Duration(seconds: 3), () => setState(() {})),
         child: ListView.builder(
             itemCount: widget._posts.length,
-            itemBuilder: (_, index) => SizedBox(
-                  height: 100,
-                  child: Card(
-                    child: Center(child: Text(widget._posts[index].title)),
-                  ),
-                )),
+            itemBuilder: (_, index) =>
+                NewsItemCard(post: widget._posts[index])),
       ),
     );
   }
