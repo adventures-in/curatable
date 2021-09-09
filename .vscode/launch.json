@@ -19,7 +19,8 @@
       "name": "backend",
       "cwd": "backend",
       "request": "launch",
-      "type": "dart"
+      "type": "dart",
+      "program": "bin/server.dart"
     },
     {
       "name": "web",
