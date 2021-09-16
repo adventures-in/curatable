@@ -24,35 +24,44 @@ extension JsonMapExtension on JsonMap {
 abstract class TypeUtil {
   static Value encode(dynamic value) {
     if (value == null) {
-      return Value()..nullValue = "NULL_VALUE";
+      return Value(nullValue: "NULL_VALUE");
     }
     if (value is bool) {
-      return Value()..booleanValue = value;
+      return Value(booleanValue: value);
     }
     if (value is int) {
-      return Value()..integerValue = value.toString();
+      return Value(integerValue: value.toString());
     }
     if (value is double) {
-      return Value()..doubleValue = value;
+      return Value(doubleValue: value);
     }
     if (value is DateTime) {
-      return Value()..timestampValue = value.microsecondsSinceEpoch.toString();
+      return Value(timestampValue: value.microsecondsSinceEpoch.toString());
     }
     if (value is String) {
-      return Value()..stringValue = value;
+      return Value(stringValue: value);
     }
     if (value is List) {
-      var array = ArrayValue()..values = [];
-      array.values!.addAll(value.map((e) => encode(e)));
-      return Value()..arrayValue = array;
+      return Value(
+        arrayValue: ArrayValue(
+          values: value.map((e) => encode(e)).toList(),
+        ),
+      );
     }
     if (value is Map) {
-      var map = MapValue()..fields = {};
-      value.forEach((key, val) => map.fields![key] = encode(val));
-      return Value()..mapValue = map;
+      return Value(
+        mapValue: MapValue(
+          fields: value.map(
+            (key, val) => MapEntry(
+              key,
+              encode(val),
+            ),
+          ),
+        ),
+      );
     }
     if (value is Uint8List) {
-      return Value()..bytesValue = value.toString();
+      return Value(bytesValue: value.toString());
     }
     // if (value is DocumentReference) {
     //   return Value()..referenceValue = value.fullPath;
