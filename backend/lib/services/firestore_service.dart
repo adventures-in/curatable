@@ -8,7 +8,7 @@ import '../extensions/json_list_extension.dart';
 // we will hit this endpoint every (say) hour, with a cron job: https://cloud.google.com/scheduler
 class FirestoreService {
   FirestoreService(AutoRefreshingAuthClient client, {FirestoreApi? api}) {
-    var backendDefine = const String.fromEnvironment('BACKEND');
+    const backendDefine = String.fromEnvironment('BACKEND');
     // store the passed api or create one
     _api = api ??
         // connect to the local emulator if relevant dart define is present
