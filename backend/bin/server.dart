@@ -1,32 +1,31 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// Copyright 2021 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+import 'package:backend/services/firestore_service.dart';
+import 'package:backend/services/http_service.dart';
+import 'package:googleapis_auth/auth_io.dart';
+import 'package:shelf/shelf.dart';
+import 'package:shelf/shelf_io.dart' as shelf_io;
 
-import 'package:functions_framework/serve.dart';
-import 'package:backend/functions.dart' as function_library;
+// For Google Cloud Run, set _hostname to '0.0.0.0'
+const _hostname = '0.0.0.0';
 
-Future<void> main(List<String> args) async {
-  await serve(args, _nameToFunctionTarget);
+void main() {
+  shelf_io.serve(_handler, _hostname, 8080).then((server) {
+    print('Serving at ws://${server.address.host}:${server.port}');
+  });
 }
 
-FunctionTarget? _nameToFunctionTarget(String name) {
-  switch (name) {
-    case 'function':
-      return FunctionTarget.http(
-        function_library.function,
-      );
-    default:
-      return null;
-  }
+Future<Response> _handler(Request request) async {
+  // Create a client that will authenticate as the default service account.
+  final googleapisClient =
+      await clientViaApplicationDefaultCredentials(scopes: []);
+
+  final firestoreService = FirestoreService(googleapisClient);
+  final httpService = HttpService();
+
+  final latestRedditPosts = await httpService.retrieveRedditPosts();
+
+  await firestoreService.mergeRedditPosts(latestRedditPosts);
+
+  googleapisClient.close();
+
+  return Response.ok('Saved ${latestRedditPosts.length} new posts');
 }

@@ -5,21 +5,26 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "news_curation",
+      "name": "curatable",
       "request": "launch",
       "type": "dart"
-    },
-    {
-      "name": "news_curation (profile mode)",
-      "request": "launch",
-      "type": "dart",
-      "flutterMode": "profile"
     },
     {
       "name": "backend",
       "cwd": "backend",
       "request": "launch",
-      "type": "dart"
+      "type": "dart",
+      "program": "bin/server.dart",
+    },
+    {
+      "name": "backend (emulator)",
+      "cwd": "backend",
+      "request": "launch",
+      "type": "dart",
+      "program": "bin/server.dart",
+      "args": [
+        "--dart-define=BACKEND=EMULATOR"
+      ],
     },
     {
       "name": "web",
