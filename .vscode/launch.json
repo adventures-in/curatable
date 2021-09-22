@@ -23,7 +23,7 @@
       "type": "dart",
       "program": "bin/server.dart",
       "args": [
-        "--dart-define", "BACKEND=EMULATOR"
+        "--dart-define=BACKEND=EMULATOR"
       ],
     },
     {
