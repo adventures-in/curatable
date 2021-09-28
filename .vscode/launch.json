@@ -35,9 +35,7 @@
       "request": "launch",
       "type": "dart",
       "program": "bin/server.dart",
-      "args": [
-        "--dart-define=BACKEND=EMULATOR"
-      ],
+      "toolArgs": ["-DBACKEND=EMULATOR"]
     },
     {
       "name": "web",
