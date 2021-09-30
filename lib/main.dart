@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:news_curation/widgets/my_app.dart';
+import 'package:news_curation/widgets/main_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MainPage());
 }

@@ -5,9 +5,22 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "curatable",
+      "name": "current device",
       "request": "launch",
       "type": "dart"
+    },
+    {
+      "name": "profile: current device",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile",
+    },
+    {
+      "name": "profile: mac",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile",
+      "deviceId": "macos"
     },
     {
       "name": "backend",
@@ -22,9 +35,7 @@
       "request": "launch",
       "type": "dart",
       "program": "bin/server.dart",
-      "args": [
-        "--dart-define=BACKEND=EMULATOR"
-      ],
+      "toolArgs": ["-DBACKEND=EMULATOR"]
     },
     {
       "name": "web",

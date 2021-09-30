@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:news_curation/models/reddit_post.dart';
 import 'package:url_launcher/link.dart';
 
-class NewsItemCard extends StatelessWidget {
-  const NewsItemCard({
+class CuratableItemCard extends StatelessWidget {
+  const CuratableItemCard({
     Key? key,
     required this.post,
   }) : super(key: key);
