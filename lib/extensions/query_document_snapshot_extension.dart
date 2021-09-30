@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:news_curation/models/reddit_post.dart';
-import 'package:news_curation/utils/type_utils.dart';
+import 'package:curatable/models/reddit_post.dart';
+import 'package:curatable/utils/type_utils.dart';
 
 extension QueryDocumentSnapshotExtension on QueryDocumentSnapshot<JsonMap> {
   RedditPost toRedditPost() => RedditPost.fromJson(data());

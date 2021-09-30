@@ -1,5 +1,5 @@
 name: backend
-description: a backend for news_curation app
+description: a backend for curatable app
 # version: 0.1.0
 # homepage: https://www.example.com
 publish_to: none

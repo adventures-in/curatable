@@ -1,6 +1,6 @@
+import 'package:curatable/models/reddit_post.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:news_curation/models/reddit_post.dart';
 import 'package:url_launcher/link.dart';
 
 class CuratableItemCard extends StatelessWidget {

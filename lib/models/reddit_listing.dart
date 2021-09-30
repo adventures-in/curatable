@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:news_curation/models/reddit_post.dart';
-import 'package:news_curation/utils/type_utils.dart';
+import 'package:curatable/models/reddit_post.dart';
+import 'package:curatable/utils/type_utils.dart';
 
 part 'reddit_listing.freezed.dart';
 part 'reddit_listing.g.dart';

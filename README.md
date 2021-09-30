@@ -1,4 +1,4 @@
-# news_curation
+# curatable
 
 Curating news from noisy feeds.
 

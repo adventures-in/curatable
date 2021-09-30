@@ -1,4 +1,4 @@
-name: news_curation
+name: curatable
 description: Curating news from noisy feeds.
 publish_to: 'none'
 version: 0.0.1

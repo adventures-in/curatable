@@ -1,4 +1,4 @@
-# backend for news_curation
+# backend for curatable
 
 ## Test locally 
 

@@ -1,6 +1,6 @@
+import 'package:curatable/widgets/curatables_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:news_curation/widgets/curatables_view.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);

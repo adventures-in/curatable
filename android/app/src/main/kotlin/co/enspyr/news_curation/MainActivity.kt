@@ -1,4 +1,4 @@
-package co.enspyr.news_curation
+package co.enspyr.curatable
 
 import io.flutter.embedding.android.FlutterActivity
 

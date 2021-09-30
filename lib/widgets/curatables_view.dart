@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:curatable/models/reddit_post.dart';
+import 'package:curatable/widgets/curatable_item_card.dart';
 import 'package:flutter/material.dart';
-import 'package:news_curation/models/reddit_post.dart';
-import 'package:news_curation/widgets/curatable_item_card.dart';
 
 class CuratablesView extends StatelessWidget {
   const CuratablesView({
@@ -57,9 +57,11 @@ class _MyHomePageState extends State<MyHomePage> {
         onRefresh: () =>
             Future.delayed(const Duration(seconds: 3), () => setState(() {})),
         child: ListView.builder(
-            itemCount: widget._posts.length,
-            itemBuilder: (_, index) =>
-                CuratableItemCard(post: widget._posts[index])),
+          itemCount: widget._posts.length,
+          itemBuilder: (_, index) => CuratableItemCard(
+            post: widget._posts[index],
+          ),
+        ),
       ),
     );
   }
