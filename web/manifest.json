@@ -1,6 +1,6 @@
 {
-    "name": "news_curation",
-    "short_name": "news_curation",
+    "name": "curatable",
+    "short_name": "curatable",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
